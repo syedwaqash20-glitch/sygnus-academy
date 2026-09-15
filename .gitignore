@@ -1,0 +1,21 @@
+# Environment & Secret Variables (CRITICAL)
+.env
+*.env
+Backend/.env
+
+# Python Cache & Virtual Environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+ENV/
+
+# Database SSL certificates (if any ever end up in project)
+*.crt
+*.pem
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
