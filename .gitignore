@@ -1,6 +1,8 @@
 # Environment & Secret Variables (CRITICAL)
 .env
+.env.*
 *.env
+*.env.*
 Backend/.env
 
 # Python Cache & Virtual Environments
@@ -9,6 +11,8 @@ __pycache__/
 .venv/
 venv/
 ENV/
+node_modules/
+dist/
 
 # Database SSL certificates (if any ever end up in project)
 *.crt

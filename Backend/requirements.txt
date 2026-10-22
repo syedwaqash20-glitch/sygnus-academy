@@ -4,3 +4,4 @@ sqlalchemy[asyncio]==2.0.35
 python-dotenv==1.0.1
 asyncpg
 sqlalchemy-cockroachdb==2.0.2
+aiosqlite>=0.20.0

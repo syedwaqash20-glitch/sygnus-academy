@@ -40,6 +40,21 @@ async def create_student(
     return new_student
 
 
+@router.get("/", response_model=List[schemas.StudentPublicResponse], status_code=status.HTTP_200_OK)
+async def list_students(
+    skip: int = 0,
+    limit: int = 50,
+    db: AsyncSession = Depends(get_db)
+):
+    result = await db.execute(
+        select(models.Student)
+        .where(models.Student.is_deleted == False)
+        .offset(skip)
+        .limit(limit)
+    )
+    return list(result.scalars().all())
+
+
 @router.get("/{id}", response_model=schemas.StudentPublicResponse, status_code=status.HTTP_200_OK)
 async def get_student(
     id: UUID, 
@@ -100,7 +115,7 @@ async def delete_student(
             detail="Student not found."
         )
 
-    await db.delete(student)
+    student.is_deleted = True
     await db.commit()
 
-    return {"detail": "Student deleted successfully."}
+    return {"detail": "Student marked as deleted."}
